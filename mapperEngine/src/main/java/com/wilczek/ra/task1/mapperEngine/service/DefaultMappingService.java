@@ -29,8 +29,8 @@ public class DefaultMappingService implements MappingService {
 
 	@Override
 	public String map(final String mappingName, final int number) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		final int mappingId = mappingIdForName(mappingName);
+		return map(mappingId, number);
 	}
 
 	@Override
