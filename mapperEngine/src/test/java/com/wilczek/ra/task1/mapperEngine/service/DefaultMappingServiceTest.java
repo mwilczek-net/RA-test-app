@@ -38,6 +38,15 @@ class DefaultMappingServiceTest {
 	}
 
 	@Test
+	void mappingIdForName_test() throws Exception {
+		for (int i = 0; i < MAPPINGS_LIST.size(); i++) {
+			final String mappingName = MAPPINGS_LIST.get(i);
+			final int mappingId = mappingService.mappingIdForName(mappingName);
+			assertEquals(i, mappingId, "Mapping ID for name: " + mappingName);
+		}
+	}
+
+	@Test
 	void map_id_test() throws Exception {
 		final int animalsId = 0;
 		final int testGroupId = 2;
