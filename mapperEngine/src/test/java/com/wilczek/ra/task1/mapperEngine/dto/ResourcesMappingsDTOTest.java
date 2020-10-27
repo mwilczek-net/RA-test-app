@@ -1,7 +1,7 @@
 package com.wilczek.ra.task1.mapperEngine.dto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ResourcesMappingsDTOTest {
 
 	public static final List<String> MAPPINGS_LIST = Arrays.asList("Animals", "Furnitures", "Test Group");
+	public static final int[] MAPPINGS_SIZES_LIST = new int[] {20, 20, 11};
 
 	@Autowired
 	@Qualifier("resourcesMappingsDTO")
@@ -28,7 +29,10 @@ class ResourcesMappingsDTOTest {
 
 	@Test
 	void getMappingSize_test() {
-		fail("Not implemented test");
+		for (int i = 0; i< MAPPINGS_LIST.size(); i++) {
+			final int mappingSize = mappingsDTO.getMappingSize(i);
+			assertEquals(MAPPINGS_SIZES_LIST[i], mappingSize, "Size for mapping: " + MAPPINGS_LIST.get(i));
+		}
 	}
 
 }
