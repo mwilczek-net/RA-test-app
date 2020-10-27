@@ -2,6 +2,7 @@ package com.wilczek.ra.task1.mapperEngine.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -108,6 +109,22 @@ class DefaultMappingServiceTest {
 
 		assertLinesMatch(MAPPINGS_ANIMALS, mappedAnimals);
 		assertLinesMatch(MAPPINGS_TEST_GROUP, mappedTestGroup);
+	}
+
+	@Test
+	void getMappingSize_test() throws Exception {
+		for (int i = 0; i < MAPPINGS_LIST.size(); i++) {
+			final int mappingSize = mappingService.getMappingSize(i);
+			assertEquals(MAPPINGS_SIZES_LIST[i], mappingSize, "Size for mapping: " + MAPPINGS_LIST.get(i));
+		}
+
+		try {
+			final int notExistingMappingId = MAPPINGS_LIST.size();
+			mappingService.getMappingSize(notExistingMappingId);
+			fail("No exception thrown for size of non existing mappingID: " + notExistingMappingId);
+		} catch (final IndexOutOfBoundsException e) {
+			// success
+		}
 	}
 
 }
