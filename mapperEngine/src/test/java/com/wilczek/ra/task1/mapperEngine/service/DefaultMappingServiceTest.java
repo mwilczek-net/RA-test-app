@@ -1,5 +1,6 @@
 package com.wilczek.ra.task1.mapperEngine.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 import java.util.Arrays;
@@ -34,6 +35,22 @@ class DefaultMappingServiceTest {
 	void getMappings_test() throws Exception {
 		final List<String> mappings = mappingService.getMappings();
 		assertLinesMatch(MAPPINGS_LIST, mappings);
+	}
+
+	@Test
+	void map_id_test() throws Exception {
+		final int animalsId = 0;
+		final int testGroupId = 2;
+
+		for (int i = 0; i < MAPPINGS_ANIMALS.size(); i++) {
+			final String mappedValue = mappingService.map(animalsId, i);
+			assertEquals(MAPPINGS_ANIMALS.get(i), mappedValue);
+		}
+
+		for (int i = 0; i < MAPPINGS_TEST_GROUP.size(); i++) {
+			final String mappedValue = mappingService.map(testGroupId, i);
+			assertEquals(MAPPINGS_TEST_GROUP.get(i), mappedValue);
+		}
 	}
 
 }
