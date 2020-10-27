@@ -9,7 +9,7 @@ import com.wilczek.ra.task1.mapperEngine.utils.ResourceHelper;
 
 @RestController
 @RequestMapping("/api")
-public class MappingsValues {
+public class MappingsValuesController {
 
 	@RequestMapping("/hello")
 	public String helloWorld() throws IOException {
