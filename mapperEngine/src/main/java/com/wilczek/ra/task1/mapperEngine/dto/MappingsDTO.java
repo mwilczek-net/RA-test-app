@@ -9,6 +9,8 @@ public interface MappingsDTO {
 
 	List<String> getMappings() throws Exception;
 
+	int getMappingSize(int mappingId);
+
 	String map(int mappingId, int number);
 
 	default List<String> map(final int mappingId, final List<Integer> numbers) {

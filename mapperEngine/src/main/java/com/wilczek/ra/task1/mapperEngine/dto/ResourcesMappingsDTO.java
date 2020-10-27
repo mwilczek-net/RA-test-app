@@ -40,6 +40,12 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 	}
 
 	@Override
+	public int getMappingSize(final int mappingId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public String map(final int mappingId, final int number) {
 		// TODO Auto-generated method stub
 		return null;

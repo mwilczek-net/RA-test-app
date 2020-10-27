@@ -1,6 +1,7 @@
 package com.wilczek.ra.task1.mapperEngine.dto;
 
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +24,11 @@ class ResourcesMappingsDTOTest {
 	void getMappings_test() throws Exception {
 		final List<String> mappings = mappingsDTO.getMappings();
 		assertLinesMatch(MAPPINGS_LIST, mappings);
+	}
+
+	@Test
+	void getMappingSize_test() {
+		fail("Not implemented test");
 	}
 
 }
