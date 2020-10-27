@@ -1,0 +1,54 @@
+{
+  "mappings": [
+    {
+      "name": "Animals",
+      "values": [
+        "Mouse",
+        "Cat",
+        "Dog",
+        "Elephant",
+        "Djungarian Hamster",
+        "Pigeon",
+        "Penguin",
+        "Snkae",
+        "Panda",
+        "Bear",
+        "Koala",
+        "Hawk",
+        "Eagle",
+        "Rat",
+        "Parrot",
+        "Pig",
+        "Guinea Pig",
+        "Vietnamese Walkingstick",
+        "Snail",
+        "Unicorn"
+      ]
+    },
+    {
+      "name": "Furnitures",
+      "values": [
+        "Chair",
+        "Table",
+        "Cabinet",
+        "Bed",
+        "Couch",
+        "Chest",
+        "Armchair",
+        "Desk",
+        "Sofa",
+        "Stool",
+        "Coat Rack",
+        "Christmas Tree",
+        "Floor Lamp",
+        "Wardrobe",
+        "Shelf",
+        "Coffee Table",
+        "Bench",
+        "Piano",
+        "Wall Unit",
+        "Throne"
+      ]
+    }
+  ]
+}
