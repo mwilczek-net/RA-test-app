@@ -54,9 +54,17 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 	}
 
 	@Override
-	public String map(final int mappingId, final int number) {
-		// TODO Auto-generated method stub
-		return null;
+	public String map(final int mappingId, final int number) throws Exception {
+		try {
+			return getMappingsData()
+					.getMappings()
+					.get(mappingId)
+					.getValues()
+					.get(number);
+		} catch (final IOException e) {
+			LOG.error(e);
+			throw e;
+		}
 	}
 
 	public MappingsData getMappingsData() throws IOException {
