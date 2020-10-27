@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,21 @@ class DefaultMappingServiceTest {
 			final String mappedValue = mappingService.map(testGroupName, i);
 			assertEquals(MAPPINGS_TEST_GROUP.get(i), mappedValue);
 		}
+	}
+
+	@Test
+	void map_id_list_test() throws Exception {
+		final int animalsId = 0;
+		final int testGroupId = 2;
+
+		final List<Integer> size20 = IntStream.range(0, 20).boxed().collect(Collectors.toList());
+		final List<Integer> size11 = IntStream.range(0, 11).boxed().collect(Collectors.toList());
+
+		final List<String> mappedAnimals = mappingService.map(animalsId, size20);
+		final List<String> mappedTestGroup = mappingService.map(testGroupId, size11);
+
+		assertLinesMatch(MAPPINGS_ANIMALS, mappedAnimals);
+		assertLinesMatch(MAPPINGS_TEST_GROUP, mappedTestGroup);
 	}
 
 }

@@ -10,7 +10,7 @@ public interface MappingService {
 
 	String map(String mappingName, int number) throws Exception;
 
-	List<String> map(int mappingId, List<Integer> numbers);
+	List<String> map(int mappingId, List<Integer> numbers) throws Exception;
 
 	List<String> map(String mappingName, List<Integer> numbers);
 
