@@ -19,8 +19,7 @@ public class DefaultMappingService implements MappingService {
 
 	@Override
 	public List<String> getMappings() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mappingsDTO.getMappings();
 	}
 
 	@Override
