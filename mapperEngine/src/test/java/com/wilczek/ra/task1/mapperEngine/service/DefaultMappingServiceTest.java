@@ -62,4 +62,20 @@ class DefaultMappingServiceTest {
 		}
 	}
 
+	@Test
+	void map_name_test() throws Exception {
+		final String animalsName = MAPPINGS_LIST.get(0);
+		final String testGroupName = MAPPINGS_LIST.get(2);
+
+		for (int i = 0; i < MAPPINGS_ANIMALS.size(); i++) {
+			final String mappedValue = mappingService.map(animalsName, i);
+			assertEquals(MAPPINGS_ANIMALS.get(i), mappedValue);
+		}
+
+		for (int i = 0; i < MAPPINGS_TEST_GROUP.size(); i++) {
+			final String mappedValue = mappingService.map(testGroupName, i);
+			assertEquals(MAPPINGS_TEST_GROUP.get(i), mappedValue);
+		}
+	}
+
 }
