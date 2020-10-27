@@ -5,9 +5,13 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
 class ResourceHelperTest {
+
+	private static final Logger LOG = LogManager.getLogger(ResourceHelperTest.class);
 
 	public static final String NON_EXISTING_FILE_PATH = "non-existing-file-path";
 	public static final String EXISTING_FILE_PATH = "ResourceHelper/existingFile.txt";
@@ -22,8 +26,14 @@ class ResourceHelperTest {
 			// success
 		}
 
-		final String existingFileContent = ResourceHelper.readResourceToString(EXISTING_FILE_PATH);
-		assertEquals(EXISTING_FILE_CONTENT, existingFileContent);
+		try {
+			final String existingFileContent = ResourceHelper.readResourceToString(EXISTING_FILE_PATH);
+			assertEquals(EXISTING_FILE_CONTENT, existingFileContent);
+		} catch (final IOException e) {
+			// Make tests more verbose
+			LOG.error("Didn't find file", e);
+			throw e;
+		}
 	}
 
 }
