@@ -16,7 +16,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ResourcesMappingsDTOTest {
 
 	public static final List<String> MAPPINGS_LIST = Arrays.asList("Animals", "Furnitures", "Test Group");
-	public static final int[] MAPPINGS_SIZES_LIST = new int[] {20, 20, 11};
+	public static final int[] MAPPINGS_SIZES_LIST = new int[] { 20, 20, 11 };
+
+	public static final List<String> MAPPINGS_ANIMALS = Arrays.asList("Mouse", "Cat", "Dog", "Elephant",
+			"Djungarian Hamster", "Pigeon", "Penguin", "Snkae", "Panda", "Bear", "Koala", "Hawk", "Eagle", "Rat",
+			"Parrot", "Pig", "Guinea Pig", "Vietnamese Walkingstick", "Snail", "Unicorn");
+
+	public static final List<String> MAPPINGS_TEST_GROUP = Arrays.asList("Test value 1", "Test value 2", "Test value 3",
+			"Test value 4", "Test value 5", "Test value 6", "Test value 7", "Test value 8", "Test value 9",
+			"Test value 10", "Test value 11");
 
 	@Autowired
 	@Qualifier("resourcesMappingsDTO")
@@ -30,7 +38,7 @@ class ResourcesMappingsDTOTest {
 
 	@Test
 	void getMappingSize_test() throws Exception {
-		for (int i = 0; i< MAPPINGS_LIST.size(); i++) {
+		for (int i = 0; i < MAPPINGS_LIST.size(); i++) {
 			final int mappingSize = mappingsDTO.getMappingSize(i);
 			assertEquals(MAPPINGS_SIZES_LIST[i], mappingSize, "Size for mapping: " + MAPPINGS_LIST.get(i));
 		}
@@ -42,7 +50,22 @@ class ResourcesMappingsDTOTest {
 		} catch (final IndexOutOfBoundsException e) {
 			// success
 		}
+	}
 
+	@Test
+	void map_test() {
+		final int animalsId = 0;
+		final int testGroupId = 2;
+
+		for (int i = 0; i < MAPPINGS_ANIMALS.size(); i++) {
+			final String mappedValue = mappingsDTO.map(animalsId, i);
+			assertEquals(MAPPINGS_ANIMALS.get(i), mappedValue);
+		}
+
+		for (int i = 0; i < MAPPINGS_TEST_GROUP.size(); i++) {
+			final String mappedValue = mappingsDTO.map(testGroupId, i);
+			assertEquals(MAPPINGS_TEST_GROUP.get(i), mappedValue);
+		}
 	}
 
 }
