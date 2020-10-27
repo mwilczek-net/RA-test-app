@@ -12,7 +12,7 @@ public interface MappingService {
 
 	List<String> map(int mappingId, List<Integer> numbers) throws Exception;
 
-	List<String> map(String mappingName, List<Integer> numbers);
+	List<String> map(String mappingName, List<Integer> numbers) throws Exception;
 
 	List<String> mapAndJoinPrevious(String mappingName, List<Integer> numbers, String separator);
 

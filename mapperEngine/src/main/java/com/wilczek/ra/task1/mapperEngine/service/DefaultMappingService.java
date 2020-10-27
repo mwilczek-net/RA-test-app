@@ -39,9 +39,9 @@ public class DefaultMappingService implements MappingService {
 	}
 
 	@Override
-	public List<String> map(final String mappingName, final List<Integer> numbers) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> map(final String mappingName, final List<Integer> numbers) throws Exception {
+		final int mappingId = mappingIdForName(mappingName);
+		return map(mappingId, numbers);
 	}
 
 	@Override
