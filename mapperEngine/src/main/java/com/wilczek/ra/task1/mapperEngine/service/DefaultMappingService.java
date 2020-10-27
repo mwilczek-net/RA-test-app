@@ -43,9 +43,13 @@ public class DefaultMappingService implements MappingService {
 		final int mappingId = mappingIdForName(mappingName);
 		return map(mappingId, numbers);
 	}
-
 	@Override
-	public List<String> mapAndJoinPrevious(final String mappingName, final List<Integer> numbers, final String separator) {
+	public List<String> mapAndJoinPrevious(final int mappingId, final List<Integer> numbers, final String separator) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<String> mapAndJoinPrevious(final String mappingName, final List<Integer> numbers, final String separator) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -14,7 +14,9 @@ public interface MappingService {
 
 	List<String> map(String mappingName, List<Integer> numbers) throws Exception;
 
-	List<String> mapAndJoinPrevious(String mappingName, List<Integer> numbers, String separator);
+	List<String> mapAndJoinPrevious(int mappingId, List<Integer> numbers, String separator) throws Exception;
+
+	List<String> mapAndJoinPrevious(String mappingName, List<Integer> numbers, String separator) throws Exception;
 
 	int getMappingSize(int mappingId) throws Exception;
 
