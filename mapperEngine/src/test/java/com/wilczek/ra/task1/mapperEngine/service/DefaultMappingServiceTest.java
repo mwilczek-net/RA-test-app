@@ -95,4 +95,19 @@ class DefaultMappingServiceTest {
 		assertLinesMatch(MAPPINGS_TEST_GROUP, mappedTestGroup);
 	}
 
+	@Test
+	void map_name_list_test() throws Exception {
+		final String animalsName = MAPPINGS_LIST.get(0);
+		final String testGroupName = MAPPINGS_LIST.get(2);
+
+		final List<Integer> size20 = IntStream.range(0, 20).boxed().collect(Collectors.toList());
+		final List<Integer> size11 = IntStream.range(0, 11).boxed().collect(Collectors.toList());
+
+		final List<String> mappedAnimals = mappingService.map(animalsName, size20);
+		final List<String> mappedTestGroup = mappingService.map(testGroupName, size11);
+
+		assertLinesMatch(MAPPINGS_ANIMALS, mappedAnimals);
+		assertLinesMatch(MAPPINGS_TEST_GROUP, mappedTestGroup);
+	}
+
 }
