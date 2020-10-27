@@ -85,4 +85,9 @@ class ResourcesMappingsDTOTest {
 		assertLinesMatch(MAPPINGS_TEST_GROUP, mappedTestGroup);
 	}
 
+	@Test
+	void mappingIdForName_test() {
+
+	}
+
 }

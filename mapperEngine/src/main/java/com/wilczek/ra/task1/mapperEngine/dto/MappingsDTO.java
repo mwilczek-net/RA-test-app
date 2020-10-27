@@ -22,4 +22,6 @@ public interface MappingsDTO {
 		return resultMapping;
 	}
 
+	int mappingIdForName(String mappingName);
+
 }

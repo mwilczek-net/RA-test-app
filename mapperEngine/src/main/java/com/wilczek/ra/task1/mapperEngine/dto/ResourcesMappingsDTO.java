@@ -67,6 +67,12 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 		}
 	}
 
+	@Override
+	public int mappingIdForName(final String mappingName) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	public MappingsData getMappingsData() throws IOException {
 		if (mappingsData == null) {
 			mappingsData = ResourceHelper.readResoureceToObject(mappingsFileUrl, MappingsData.class);
