@@ -59,8 +59,7 @@ public class DefaultMappingService implements MappingService {
 
 	@Override
 	public int mappingIdForName(final String mappingName) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return mappingsDTO.mappingIdForName(mappingName);
 	}
 
 
