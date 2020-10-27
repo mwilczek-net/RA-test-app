@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wilczek.ra.task1.mapperEngine.data.MappingData;
 import com.wilczek.ra.task1.mapperEngine.data.MappingsData;
 import com.wilczek.ra.task1.mapperEngine.utils.ResourceHelper;
@@ -49,9 +48,7 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 
 	public MappingsData getMappingsData() throws IOException {
 		if (mappingsData == null) {
-			final String mappingsJson = ResourceHelper.readResourceToString(mappingsFileUrl);
-			final ObjectMapper objectMapper = new ObjectMapper();
-			mappingsData = objectMapper.readValue(mappingsJson, MappingsData.class);
+			mappingsData = ResourceHelper.readResoureceToObject(mappingsFileUrl, MappingsData.class);
 		}
 
 		return mappingsData;

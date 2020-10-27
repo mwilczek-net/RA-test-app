@@ -49,6 +49,22 @@
         "Wall Unit",
         "Throne"
       ]
+    },
+    {
+      "name": "Test Group",
+      "values": [
+        "Test value 1",
+        "Test value 2",
+        "Test value 3",
+        "Test value 4",
+        "Test value 5",
+        "Test value 6",
+        "Test value 7",
+        "Test value 8",
+        "Test value 9",
+        "Test value 10",
+        "Test value 11"
+      ]
     }
   ]
 }
