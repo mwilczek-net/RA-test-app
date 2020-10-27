@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes = { ResourcesMappingsDTO.class })
 class ResourcesMappingsDTOTest {
 
-	public static final List<String> MAPPINGS_LIST = Arrays.asList("Animals", "Furniture");
+	public static final List<String> MAPPINGS_LIST = Arrays.asList("Animals", "Furnitures");
 
 	@Autowired
 	@Qualifier("resourcesMappingsDTO")
