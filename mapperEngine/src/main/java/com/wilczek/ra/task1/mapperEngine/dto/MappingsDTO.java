@@ -9,7 +9,7 @@ public interface MappingsDTO {
 
 	List<String> getMappings() throws Exception;
 
-	int getMappingSize(int mappingId);
+	int getMappingSize(int mappingId) throws Exception;
 
 	String map(int mappingId, int number);
 
