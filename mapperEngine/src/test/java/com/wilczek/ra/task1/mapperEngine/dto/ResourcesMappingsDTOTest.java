@@ -86,8 +86,12 @@ class ResourcesMappingsDTOTest {
 	}
 
 	@Test
-	void mappingIdForName_test() {
-
+	void mappingIdForName_test() throws Exception {
+		for (int i = 0; i < MAPPINGS_LIST.size(); i++) {
+			final String mappingName = MAPPINGS_LIST.get(i);
+			final int mappingId = mappingsDTO.mappingIdForName(mappingName);
+			assertEquals(i, mappingId, "Mapping ID for name: " + mappingName);
+		}
 	}
 
 }
