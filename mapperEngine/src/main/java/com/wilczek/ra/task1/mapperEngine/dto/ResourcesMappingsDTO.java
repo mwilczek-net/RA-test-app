@@ -27,17 +27,16 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 	private MappingsData mappingsData = null;
 
 	@Override
-	public List<String> getMappings() {
+	public List<String> getMappings() throws Exception {
 		try {
 			return CollectionUtils.emptyIfNull(getMappingsData().getMappings())
 					.stream()
 					.map(MappingData::getName)
 					.collect(Collectors.toList());
 		} catch (final IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e);
+			throw e;
 		}
-		return null;
 	}
 
 	@Override

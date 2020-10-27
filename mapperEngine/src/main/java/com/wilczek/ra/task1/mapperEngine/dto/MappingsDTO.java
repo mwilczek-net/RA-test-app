@@ -7,7 +7,7 @@ import org.apache.commons.collections4.CollectionUtils;
 
 public interface MappingsDTO {
 
-	List<String> getMappings();
+	List<String> getMappings() throws Exception;
 
 	String map(int mappingId, int number);
 

@@ -20,7 +20,7 @@ class ResourcesMappingsDTOTest {
 	private ResourcesMappingsDTO mappingsDTO;
 
 	@Test
-	void getMappings_test() {
+	void getMappings_test() throws Exception {
 		final List<String> mappings = mappingsDTO.getMappings();
 		assertLinesMatch(MAPPINGS_LIST, mappings);
 	}
