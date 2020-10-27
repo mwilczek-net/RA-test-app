@@ -61,7 +61,7 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 					.get(mappingId)
 					.getValues()
 					.get(number);
-		} catch (final IOException e) {
+		} catch (final Exception e) {
 			LOG.error(e);
 			throw e;
 		}
@@ -69,8 +69,12 @@ public class ResourcesMappingsDTO implements MappingsDTO {
 
 	@Override
 	public int mappingIdForName(final String mappingName) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			return getMappings().indexOf(mappingName);
+		} catch (final Exception e) {
+			LOG.error(e);
+			throw e;
+		}
 	}
 
 	public MappingsData getMappingsData() throws IOException {
