@@ -31,3 +31,7 @@ Default base url: `http://localhost:8080`
 - `/api/mappings/map/id/{mappingId}?numbers={numbers}&separator={separator}` - the same as previous, but uses order number from `/api/mappings/list`. <br>
   **example:** `/api/mappings/map/id/0?numbers=4,3,2,1` <br>
   **example:** `/api/mappings/map/id/0?numbers=4,3,2,1&separator=%20!%20`
+
+# Configuration
+
+- Mappings configuration: `/mapperWebApp/src/main/resources/mappings/mappings.json` - changes requires recompilation
