@@ -20,6 +20,8 @@ public interface MappingService {
 
 	int getMappingSize(int mappingId) throws Exception;
 
+	int getMappingSize(String mappingName) throws Exception;
+
 	int mappingIdForName(String mappingName) throws Exception;
 
 }

@@ -71,6 +71,12 @@ public class DefaultMappingService implements MappingService {
 	}
 
 	@Override
+	public int getMappingSize(final String mappingName) throws Exception {
+		final int mappingId = mappingIdForName(mappingName);
+		return getMappingSize(mappingId);
+	}
+
+	@Override
 	public int mappingIdForName(final String mappingName) throws Exception {
 		return mappingsDTO.mappingIdForName(mappingName);
 	}
