@@ -49,6 +49,31 @@
         "Wall Unit",
         "Throne"
       ]
+    },
+    {
+      "name": "Cars",
+      "values": [
+        "Fiat",
+        "Opel",
+        "BMW",
+        "Audi",
+        "Ford",
+        "Chevrolet",
+        "Cadillac",
+        "Nissan",
+        "Toyota",
+        "Subaru",
+        "Kia",
+        "Honda",
+        "Hyundai",
+        "Jaguar",
+        "Land Rover",
+        "Citroën",
+        "Jeep",
+        "Škoda",
+        "Renault",
+        "Tata"
+      ]
     }
   ]
 }
