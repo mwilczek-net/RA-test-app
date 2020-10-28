@@ -32,15 +32,15 @@ class DefaultConvertersServiceTest {
 		final List<MappedValuesData> shortStringsLongInt = convertersService.convertMappedResults(inputIntLong, inputStringsShort);
 		final List<MappedValuesData> longStringsShortInt = convertersService.convertMappedResults(inputIntShort, inputStringsLong);
 
-		assertLinesMatch(inputStringsShort, shortStringsShortInt.stream().map(MappedValuesData::getValue).collect(Collectors.toList()));
-		assertLinesMatch(inputStringsLong, longStringsLongInt.stream().map(MappedValuesData::getValue).collect(Collectors.toList()));
-		assertLinesMatch(inputStringsShort, shortStringsLongInt.stream().map(MappedValuesData::getValue).collect(Collectors.toList()));
-		assertLinesMatch(inputStringsLong, longStringsShortInt.stream().map(MappedValuesData::getValue).collect(Collectors.toList()));
+		assertLinesMatch(inputStringsShort, shortStringsShortInt.stream().map(MappedValuesData::getValue).filter(item -> item != null).collect(Collectors.toList()));
+		assertLinesMatch(inputStringsLong, longStringsLongInt.stream().map(MappedValuesData::getValue).filter(item -> item != null).collect(Collectors.toList()));
+		assertLinesMatch(inputStringsShort, shortStringsLongInt.stream().map(MappedValuesData::getValue).filter(item -> item != null).collect(Collectors.toList()));
+		assertLinesMatch(inputStringsLong, longStringsShortInt.stream().map(MappedValuesData::getValue).filter(item -> item != null).collect(Collectors.toList()));
 
-		assertIterableEquals(inputIntShort, shortStringsShortInt.stream().map(MappedValuesData::getId).collect(Collectors.toList()));
-		assertIterableEquals(inputIntLong, longStringsLongInt.stream().map(MappedValuesData::getId).collect(Collectors.toList()));
-		assertIterableEquals(inputIntLong, shortStringsLongInt.stream().map(MappedValuesData::getId).collect(Collectors.toList()));
-		assertIterableEquals(inputIntShort, longStringsLongInt.stream().map(MappedValuesData::getId).collect(Collectors.toList()));
+		assertIterableEquals(inputIntShort, shortStringsShortInt.stream().map(MappedValuesData::getId).filter(item -> item != null).collect(Collectors.toList()));
+		assertIterableEquals(inputIntLong, longStringsLongInt.stream().map(MappedValuesData::getId).filter(item -> item != null).collect(Collectors.toList()));
+		assertIterableEquals(inputIntLong, shortStringsLongInt.stream().map(MappedValuesData::getId).filter(item -> item != null).collect(Collectors.toList()));
+		assertIterableEquals(inputIntShort, longStringsShortInt.stream().map(MappedValuesData::getId).filter(item -> item != null).collect(Collectors.toList()));
 	}
 
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wilczek.ra.task1.mapperEngine.service.MappingService;
+import com.wilczek.ra.task1.mapperRestApi.data.MappedValuesData;
+import com.wilczek.ra.task1.mapperRestApi.helpers.ConvertersService;
 
 @RestController
 @RequestMapping("/api/mappings")
@@ -22,6 +24,10 @@ public class MappingsController {
 	@Autowired
 	@Qualifier("defaultMappingService")
 	private MappingService mappingService;
+
+	@Autowired
+	@Qualifier("defaultConvertersService")
+	protected ConvertersService convertersService;
 
 	@RequestMapping("/list")
 	public List<String> mappingsList() throws Exception {
@@ -39,7 +45,7 @@ public class MappingsController {
 	}
 
 	@RequestMapping("/map/name/{mappingName}")
-	public List<String> map(@PathVariable("mappingName") final String mappingName,
+	public List<MappedValuesData> map(@PathVariable("mappingName") final String mappingName,
 			@RequestParam("numbers") final String numbers,
 			@RequestParam(name = "separator", required = false) final String separator
 			) throws Exception {
@@ -47,7 +53,21 @@ public class MappingsController {
 		final List<Integer> numbersList = convertStringOfIntsToList(numbers);
 		final String selectedSeparator = separator != null ? separator : DEFAULT_SEPARATOR;
 
-		return mappingService.mapAndJoinPrevious(mappingName, numbersList, selectedSeparator);
+		final List<String> mappedValues = mappingService.mapAndJoinPrevious(mappingName, numbersList, selectedSeparator);
+		return convertersService.convertMappedResults(numbersList, mappedValues);
+	}
+
+	@RequestMapping("/map/id/{mappingId}")
+	public List<MappedValuesData> map(@PathVariable("mappingId") final int mappingId,
+			@RequestParam("numbers") final String numbers,
+			@RequestParam(name = "separator", required = false) final String separator
+			) throws Exception {
+
+		final List<Integer> numbersList = convertStringOfIntsToList(numbers);
+		final String selectedSeparator = separator != null ? separator : DEFAULT_SEPARATOR;
+
+		final List<String> mappedValues = mappingService.mapAndJoinPrevious(mappingId, numbersList, selectedSeparator);
+		return convertersService.convertMappedResults(numbersList, mappedValues);
 	}
 
 	public List<Integer> convertStringOfIntsToList(final String input) {
