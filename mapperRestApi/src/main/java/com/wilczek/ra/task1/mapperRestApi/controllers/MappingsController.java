@@ -27,4 +27,9 @@ public class MappingsController {
 	public int mappingsSize(@PathVariable("mappingName") final String mappingName) throws Exception {
 		return mappingService.getMappingSize(mappingName);
 	}
+
+	@RequestMapping("/size/id/{mappingId}")
+	public int mappingsSize(@PathVariable("mappingId") final int mappingId) throws Exception {
+		return mappingService.getMappingSize(mappingId);
+	}
 }
