@@ -99,6 +99,31 @@
         "Solder",
         "Soldering Iron"
       ]
+    },
+    {
+      "name": "Photography",
+      "values": [
+        "Camera",
+        "Lens",
+        "Matrix",
+        "Mirror",
+        "Viewfinder",
+        "Snapshot",
+        "ISO",
+        "Time",
+        "Aperture",
+        "Memory Card",
+        "Flash Light",
+        "Tripod",
+        "Trigger",
+        "RAW",
+        "Dark-Room",
+        "Printer",
+        "Focus",
+        "Zoom",
+        "Filter",
+        "Lightroom"
+      ]
     }
   ]
 }
