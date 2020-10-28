@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +30,8 @@ class DefaultMappingServiceTest {
 	public static final List<String> MAPPINGS_TEST_GROUP = Arrays.asList("Test value 1", "Test value 2", "Test value 3",
 			"Test value 4", "Test value 5", "Test value 6", "Test value 7", "Test value 8", "Test value 9",
 			"Test value 10", "Test value 11");
+
+	public static final List<String> SEPARATORS = Arrays.asList(", ", ":");
 
 	@Autowired
 	@Qualifier("defaultMappingService")
@@ -125,6 +128,68 @@ class DefaultMappingServiceTest {
 		} catch (final IndexOutOfBoundsException e) {
 			// success
 		}
+	}
+
+	@Test
+	void mapAndJoinPrevious_id_test() throws Exception {
+		final int animalsId = 0;
+
+		final int[] numbers1 = new int[] { 0, 5, 3, 8 };
+		final int[] numbers2 = new int[] { 1, 3, 5, 7, 11 };
+
+		final List<Integer> numbersList1 = Arrays.stream(numbers1).boxed().collect(Collectors.toList());
+		final List<Integer> numbersList2 = Arrays.stream(numbers2).boxed().collect(Collectors.toList());
+
+		final List<int[]> subarays1 = generateSubArrays(numbers1);
+		final List<int[]> subarays2 = generateSubArrays(numbers2);
+
+		final List<List<String>> stringLists1 = subarays1
+				.stream()
+				.map(indexes -> elementsToJoin(indexes, MAPPINGS_ANIMALS))
+				.collect(Collectors.toList());
+
+		final List<List<String>> stringLists2 = subarays2
+				.stream()
+				.map(indexes -> elementsToJoin(indexes, MAPPINGS_ANIMALS))
+				.collect(Collectors.toList());
+
+		for (final String separator: SEPARATORS) {
+			final List<String> joinedLists1 = stringLists1
+					.stream()
+					.map(l -> String.join(separator, l))
+					.collect(Collectors.toList());
+			final List<String> joinedLists2 = stringLists2
+					.stream()
+					.map(l -> String.join(separator, l))
+					.collect(Collectors.toList());
+
+			final List<String> result1 = mappingService.mapAndJoinPrevious(animalsId, numbersList1, separator);
+			final List<String> result2 = mappingService.mapAndJoinPrevious(animalsId, numbersList2, separator);
+
+			assertLinesMatch(joinedLists1, result1);
+			assertLinesMatch(joinedLists2, result2);
+		}
+	}
+
+	private List<int[]> generateSubArrays(final int[] in) {
+		final ArrayList<int[]> result = new ArrayList<>();
+
+		for (int i = 0; i < in.length; i++) {
+			final int[] subArray = Arrays.copyOfRange(in, 0, i + 1);
+			result.add(subArray);
+		}
+
+		return result;
+	}
+
+	private List<String> elementsToJoin(final int[] indexes, final List<String> elements) {
+		final List<String> result = new ArrayList<>();
+
+		for (final int index : indexes) {
+			result.add(elements.get(index));
+		}
+
+		return result;
 	}
 
 }
