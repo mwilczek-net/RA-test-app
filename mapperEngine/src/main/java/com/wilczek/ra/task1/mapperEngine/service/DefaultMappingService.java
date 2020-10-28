@@ -1,5 +1,6 @@
 package com.wilczek.ra.task1.mapperEngine.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,18 @@ public class DefaultMappingService implements MappingService {
 	}
 	@Override
 	public List<String> mapAndJoinPrevious(final int mappingId, final List<Integer> numbers, final String separator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		final List<String> simpleResult = mappingsDTO.map(mappingId, numbers);
+		final List<String> result = new ArrayList<>();
+
+		final StringBuilder partialJoinedResults = new StringBuilder();
+
+		for (final String item: simpleResult) {
+			partialJoinedResults.append(item);
+			result.add(partialJoinedResults.toString());
+			partialJoinedResults.append(separator);
+		}
+
+		return result;
 	}
 	@Override
 	public List<String> mapAndJoinPrevious(final String mappingName, final List<Integer> numbers, final String separator) throws Exception {
