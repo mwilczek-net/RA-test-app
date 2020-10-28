@@ -44,13 +44,16 @@ public class MappingsController {
 			@RequestParam(name = "separator", required = false) final String separator
 			) throws Exception {
 
-		final List<Integer> numbersList = Arrays.asList(numbers.split(","))
-				.stream()
-				.map(number -> Integer.valueOf(number))
-				.collect(Collectors.toList());
-
+		final List<Integer> numbersList = convertStringOfIntsToList(numbers);
 		final String selectedSeparator = separator != null ? separator : DEFAULT_SEPARATOR;
 
 		return mappingService.mapAndJoinPrevious(mappingName, numbersList, selectedSeparator);
+	}
+
+	public List<Integer> convertStringOfIntsToList(final String input) {
+		return Arrays.asList(input.split(","))
+				.stream()
+				.map(number -> Integer.valueOf(number))
+				.collect(Collectors.toList());
 	}
 }
