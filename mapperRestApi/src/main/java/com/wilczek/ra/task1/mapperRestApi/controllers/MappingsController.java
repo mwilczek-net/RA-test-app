@@ -51,9 +51,10 @@ public class MappingsController {
 			) throws Exception {
 
 		final List<Integer> numbersList = convertStringOfIntsToList(numbers);
+		final List<Integer> adjustedNumbersList = subOneFromEachInt(numbersList);
 		final String selectedSeparator = separator != null ? separator : DEFAULT_SEPARATOR;
 
-		final List<String> mappedValues = mappingService.mapAndJoinPrevious(mappingName, numbersList, selectedSeparator);
+		final List<String> mappedValues = mappingService.mapAndJoinPrevious(mappingName, adjustedNumbersList, selectedSeparator);
 		return convertersService.convertMappedResults(numbersList, mappedValues);
 	}
 
@@ -64,9 +65,10 @@ public class MappingsController {
 			) throws Exception {
 
 		final List<Integer> numbersList = convertStringOfIntsToList(numbers);
+		final List<Integer> adjustedNumbersList = subOneFromEachInt(numbersList);
 		final String selectedSeparator = separator != null ? separator : DEFAULT_SEPARATOR;
 
-		final List<String> mappedValues = mappingService.mapAndJoinPrevious(mappingId, numbersList, selectedSeparator);
+		final List<String> mappedValues = mappingService.mapAndJoinPrevious(mappingId, adjustedNumbersList, selectedSeparator);
 		return convertersService.convertMappedResults(numbersList, mappedValues);
 	}
 
@@ -74,6 +76,13 @@ public class MappingsController {
 		return Arrays.asList(input.split(","))
 				.stream()
 				.map(number -> Integer.valueOf(number))
+				.collect(Collectors.toList());
+	}
+
+	public List<Integer> subOneFromEachInt(final List<Integer> in) {
+		return in
+				.stream()
+				.map(val -> val - 1)
 				.collect(Collectors.toList());
 	}
 }
