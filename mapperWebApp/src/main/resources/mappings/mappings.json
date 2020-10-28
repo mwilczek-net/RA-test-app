@@ -149,6 +149,31 @@
         "Barrow",
         "Pencil"
       ]
+    },
+    {
+      "name": "Music",
+      "values": [
+        "Rock",
+        "Metal",
+        "Pop",
+        "Blues",
+        "Soul",
+        "Jazz",
+        "Folk",
+        "Country",
+        "Electronic",
+        "Reggae",
+        "Trip Hop",
+        "Techno",
+        "Hip Hop",
+        "House",
+        "Classical",
+        "Funk",
+        "Instrumental",
+        "Cold Wave",
+        "Dubstep",
+        "Disco Polo"
+      ]
     }
   ]
 }
