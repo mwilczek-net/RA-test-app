@@ -224,6 +224,31 @@
         "Crimson",
         "Cyan"
       ]
+    },
+    {
+      "name": "OS",
+      "values": [
+        "Linux",
+        "Windows",
+        "macOS",
+        "FreeBSD",
+        "Android",
+        "NetBSD",
+        "OS/2",
+        "Solaris",
+        "Symbian",
+        "z/OS",
+        "AIX",
+        "AmigaOS",
+        "Chrome OS",
+        "Haiku",
+        "iOS",
+        "NetWare",
+        "Plan 9",
+        "Gencode",
+        "ArcaOS",
+        "DOS"
+      ]
     }
   ]
 }
