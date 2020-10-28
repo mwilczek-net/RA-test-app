@@ -61,8 +61,8 @@ public class DefaultMappingService implements MappingService {
 	}
 	@Override
 	public List<String> mapAndJoinPrevious(final String mappingName, final List<Integer> numbers, final String separator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		final int mappingId = mappingIdForName(mappingName);
+		return mapAndJoinPrevious(mappingId, numbers, separator);
 	}
 
 	@Override

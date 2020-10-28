@@ -171,6 +171,47 @@ class DefaultMappingServiceTest {
 		}
 	}
 
+	@Test
+	void mapAndJoinPrevious_name_test() throws Exception {
+		final String animalsName = MAPPINGS_LIST.get(0);
+
+		final int[] numbers1 = new int[] { 0, 5, 3, 8 };
+		final int[] numbers2 = new int[] { 1, 3, 5, 7, 11 };
+
+		final List<Integer> numbersList1 = Arrays.stream(numbers1).boxed().collect(Collectors.toList());
+		final List<Integer> numbersList2 = Arrays.stream(numbers2).boxed().collect(Collectors.toList());
+
+		final List<int[]> subarays1 = generateSubArrays(numbers1);
+		final List<int[]> subarays2 = generateSubArrays(numbers2);
+
+		final List<List<String>> stringLists1 = subarays1
+				.stream()
+				.map(indexes -> elementsToJoin(indexes, MAPPINGS_ANIMALS))
+				.collect(Collectors.toList());
+
+		final List<List<String>> stringLists2 = subarays2
+				.stream()
+				.map(indexes -> elementsToJoin(indexes, MAPPINGS_ANIMALS))
+				.collect(Collectors.toList());
+
+		for (final String separator: SEPARATORS) {
+			final List<String> joinedLists1 = stringLists1
+					.stream()
+					.map(l -> String.join(separator, l))
+					.collect(Collectors.toList());
+			final List<String> joinedLists2 = stringLists2
+					.stream()
+					.map(l -> String.join(separator, l))
+					.collect(Collectors.toList());
+
+			final List<String> result1 = mappingService.mapAndJoinPrevious(animalsName, numbersList1, separator);
+			final List<String> result2 = mappingService.mapAndJoinPrevious(animalsName, numbersList2, separator);
+
+			assertLinesMatch(joinedLists1, result1);
+			assertLinesMatch(joinedLists2, result2);
+		}
+	}
+
 	private List<int[]> generateSubArrays(final int[] in) {
 		final ArrayList<int[]> result = new ArrayList<>();
 
