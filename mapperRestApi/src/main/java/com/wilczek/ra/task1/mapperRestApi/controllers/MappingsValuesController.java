@@ -1,4 +1,4 @@
-package com.wilczek.ra.task1.mapperRestApi.mappings;
+package com.wilczek.ra.task1.mapperRestApi.controllers;
 
 import java.io.IOException;
 import java.util.List;
