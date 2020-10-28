@@ -74,6 +74,31 @@
         "Renault",
         "Tata"
       ]
+    },
+    {
+      "name": "Electronic",
+      "values": [
+        "Capacitor",
+        "Resistor",
+        "Diode",
+        "LED",
+        "Battery",
+        "Coil",
+        "Printed Circuit Board",
+        "Arduino",
+        "Raspberry Pi",
+        "ATMEGA328-PU",
+        "ATMEGA168-20PU",
+        "Power Supply",
+        "Antenna",
+        "Engine",
+        "Triac",
+        "LCD Screen",
+        "Speaker",
+        "Wire",
+        "Solder",
+        "Soldering Iron"
+      ]
     }
   ]
 }
