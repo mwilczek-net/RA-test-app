@@ -35,3 +35,9 @@ Default base url: `http://localhost:8080`
 # Configuration
 
 - Mappings configuration: `/mapperWebApp/src/main/resources/mappings/mappings.json` - changes requires recompilation
+
+# Bonus
+
+Alphabet mapping
+
+`http://localhost:8080/api/mappings/map/name/Alphabet?numbers=1,12,1,63,36,31,63,3,51,32,31,44,37,35&separator=`
